@@ -1,9 +1,11 @@
-package com.android.jtcode.newjtcode;
+package com.android.jtcode.newjtcode.home.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.android.jtcode.newjtcode.R;
+
+public class AdvertisementActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
