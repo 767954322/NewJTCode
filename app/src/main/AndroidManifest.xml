@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.jtcode.newjtcode">
+    package="com.homechart.app">
 
     <!-- JPush -->
     <permission
-        android:name="com.android.jtcode.newjtcode.permission.JPUSH_MESSAGE"
+        android:name="com.homechart.app.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.hardware.camera.autofocus" />
@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
     <!-- Required  一些系统要求的权限，如访问网络等-->
-    <uses-permission android:name="com.android.jtcode.newjtcode.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="com.homechart.app.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -54,10 +54,11 @@
 
     <application
         android:name=".MyApplication"
+        android:hardwareAccelerated="false"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon_app"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
@@ -66,6 +67,30 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".home.activity.HomeActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|locale|layoutDirection"
+            android:launchMode="standard"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="photo"
+                    android:scheme="cn.com.idcool" />
+                <data
+                    android:host="activity"
+                    android:scheme="cn.com.idcool" />
+                <data
+                    android:host="article"
+                    android:scheme="cn.com.idcool" />
             </intent-filter>
         </activity>
 
@@ -141,7 +166,7 @@
         <!-- Required since 3.0.7 -->
         <!-- 新的tag/alias接口结果返回需要开发者配置一个自定的广播 -->
         <receiver
-            android:name=".shared.jpush.JPushMessageReceiver"
+            android:name="com.homechart.app.shared.jpush.JPushMessageReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!-- Required  用户注册SDK的intent -->
